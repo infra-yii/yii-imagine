@@ -8,7 +8,7 @@ class ImagineYii extends CComponent
     public $driver = "gd2";
 
     /**
-     * @return Imagine\Image\ImageInterface
+     * @return Imagine\Image\ImagineInterface
      */
     public function getImagine() {
         Yii::setPathOfAlias("Imagine", __DIR__."/Imagine/lib/Imagine");
