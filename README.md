@@ -1,4 +1,8 @@
 yii-imagine
 ===========
 
-Wrapping Imagine lib for use as a yii component
+Wrapper around the Imagine lib to use it as a yii component. 
+
+More about Imagine:
+- https://github.com/avalanche123/Imagine/
+- http://imagine.readthedocs.org
