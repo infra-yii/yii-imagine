@@ -86,9 +86,11 @@ class ImagineYii extends CComponent
             return $im;
         }
 
+        $im->resize($this->calcResizeBeforeCrop($size, $maxSize));
+        $size = $im->getSize();
+
         $w = min($maxSize->getWidth(), $size->getWidth());
         $h = min($maxSize->getHeight(), $size->getHeight());
-
         return $im->resize($this->calcResizeBeforeCrop($size, $maxSize))
             ->crop(new Point(ceil(($size->getWidth() - $w) / 2), ceil(($size->getHeight() - $h) / 2)), $maxSize);
     }
