@@ -94,6 +94,31 @@ class ImagineYii extends CComponent
         return $im->resize($this->calcResizeBeforeCrop($size, $maxSize))
             ->crop(new Point(ceil(($size->getWidth() - $w) / 2), ceil(($size->getHeight() - $h) / 2)), $maxSize);
     }
+    
+    /**
+     * Handles size string eg "100x200 crop"
+     *
+     * @param $originalFilename
+     * @param $size
+     * @param $targetFilename
+     */
+    public function handleAndSave($originalFilename, $size, $targetFilename)
+    {
+        list($w, $h) = explode("x", $size, 2);
+        $op = "resize";
+        if (strpos($h, " ")) {
+            list($h, $op) = explode(" ", $h, 2);
+        }
+
+        if ($op == "crop") {
+            $im = $this->crop($originalFilename, $w, $h);
+        } else if ($op == "thumb") {
+            $im = $this->thumb($originalFilename, $w, $h);
+        } else {
+            $im = $this->resize($originalFilename, $w, $h);
+        }
+        $im->save($targetFilename);
+    }
 
     private function calcResizeBeforeCrop(Box $image, Box $size)
     {
