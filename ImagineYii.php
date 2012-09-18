@@ -52,9 +52,9 @@ class ImagineYii extends CComponent
         $k = $size->getWidth() / $maxSize->getWidth() > $size->getHeight() / $maxSize->getHeight() ? $size->getWidth() / $maxSize->getWidth() : $size->getHeight() /
             $maxSize->getHeight();
 
-        $maxSize->scale(1 / $k);
+        $size->scale(1 / $k);
 
-        return $im->resize($maxSize);
+        return $im->resize($size);
     }
 
     /**
